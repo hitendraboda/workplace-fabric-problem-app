@@ -1,0 +1,22 @@
+<form [formGroup]="addForm" (ngSubmit)="onSubmit()">
+  <div class="card text-center w-50 m-auto">
+    <div class="card-body">
+      <div class="row ">
+        <div class="col">
+          <div class="form-group row required">
+            <label for="name" class="col-sm-4 col-form-label col-form-label-sm lbl-right">Name</label>
+            <div class="col-sm-7">
+              <input type="text" class="form-control form-control-sm" formControlName="name" name="name" id="name"
+                placeholder="name" [ngClass]="{ 'is-invalid': submitted && addForm.controls['name'].errors }" />
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="card-footer text-muted">
+      <button class="btn btn-sm btn-success">Create</button>
+      |
+      <a class="btn btn-sm btn-secondary" [routerLink]="['/master/floor/list']">Cancel</a>
+    </div>
+  </div>
+</form>

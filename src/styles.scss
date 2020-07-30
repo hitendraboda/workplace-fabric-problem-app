@@ -1,0 +1,28 @@
+/* You can add global styles to this file, and also import other style files */
+/* Master Styles */
+.navbar {
+    margin-bottom: 20px;
+  }
+  
+  .box-shadow {
+    box-shadow: 0 0.25rem 0.75rem rgba(0, 0, 0, .05);
+  }
+  
+  .bg-purple {
+    background-color: var(--purple);
+  }
+  
+  .text-white-50 {
+    color: rgba(255, 255, 255, .5);
+  }
+    /*
+    Copyright 2017-2018 Google Inc. All Rights Reserved.
+    Use of this source code is governed by an MIT-style license that
+    can be found in the LICENSE file at http://angular.io/license
+    */
+
+  .btn-custom {
+      color: #fff !important;
+      background-color: #41629d !important;
+      border-color: #41629d !important;
+  }  

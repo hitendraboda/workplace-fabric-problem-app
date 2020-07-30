@@ -1,0 +1,30 @@
+<div class="row">
+  <div class="col">
+    <div class="login-form">
+      <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+        <h2>Login</h2>
+        <!-- <p class="hint-text">Demo user admin:admin</p> -->
+        <div class="form-group">
+          <input type="text" formControlName="username" class="form-control"
+            [ngClass]="{ 'is-invalid': submitted && f.username.errors }" placeholder="Username" />
+          <div *ngIf="submitted && loginForm.controls['username'].errors" class="invalid-feedback">
+            <div *ngIf="loginForm.controls['username'].errors.required">Username is required</div>
+          </div>
+        </div>
+        <div class="form-group">
+          <input type="password" formControlName="password" class="form-control"
+            [ngClass]="{ 'is-invalid': submitted && f.password.errors }" placeholder="Password" />
+          <div *ngIf="submitted && loginForm.controls['password'].errors" class="invalid-feedback">
+            <div *ngIf="loginForm.controls['password'].errors.required">Password is required</div>
+          </div>
+        </div>
+        <div class="form-group">
+          <button [disabled]="loading" class="btn btn-success btn-lg btn-block">
+            <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
+            Login
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

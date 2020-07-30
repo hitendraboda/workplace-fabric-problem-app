@@ -1,0 +1,49 @@
+<form [formGroup]="addForm" (ngSubmit)="onSubmit()">
+  <div class="card text-center w-50 m-auto">
+    <div class="card-body">
+      <div class="row ">
+        <div class="col">
+          <div class="form-group row required">
+            <label for="firstName" class="col-sm-4 col-form-label col-form-label-sm lbl-right">Firstname</label>
+            <div class="col-sm-7">
+              <input type="text" class="form-control form-control-sm" formControlName="firstName" name="firstname"
+                id="firstName" placeholder="firstName"
+                [ngClass]="{ 'is-invalid': submitted && addForm.controls['firstName'].errors }" />
+            </div>
+          </div>
+          <div class="form-group row required">
+            <label for="lastName" class="col-sm-4 col-form-label col-form-label-sm lbl-right">Lastname</label>
+            <div class="col-sm-7">
+              <input type="text" class="form-control form-control-sm" formControlName="lastName" name="lastName"
+                id="lastName" placeholder="lastName"
+                [ngClass]="{ 'is-invalid': submitted && addForm.controls['lastName'].errors }" />
+            </div>
+          </div>
+          <div class="form-group row required">
+            <label for="email" class="col-sm-4 col-form-label col-form-label-sm lbl-right">Email</label>
+            <div class="col-sm-7">
+              <input type="email" class="form-control form-control-sm" formControlName="email" name="email" id="email"
+                placeholder="a@a.com" [ngClass]="{ 'is-invalid': submitted && addForm.controls['email'].errors }" />
+            </div>
+          </div>
+          <div class="form-group row required">
+            <label for="role" class="col-sm-4 col-form-label col-form-label-sm lbl-right">Role</label>
+            <div class="col-sm-7">
+              <select class="form-control form-control-sm" id="role" formControlName="role"
+                [ngClass]="{ 'is-invalid': submitted && addForm.controls['role'].errors }">
+                <option value="" selected>[Select Role]</option>
+                <option value="ADMIN">ADMIN</option>
+                <option value="USER">USER</option>
+              </select>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="card-footer text-muted">
+      <button class="btn btn-sm btn-success">Create</button>
+      |
+      <a class="btn btn-sm btn-secondary" [routerLink]="['/users']">Cancel</a>
+    </div>
+  </div>
+</form>

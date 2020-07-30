@@ -1,0 +1,39 @@
+<div *ngFor="let desk of desks">
+    <div class="shadow  mb-4 rounded">
+        <div class="row">
+            <div class="col-3 bg-light text-center">
+                DESK
+            </div>
+            <div class="col-8 text-center">
+                CHAIRS
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-3 bg-light text-center">
+                <h2> {{desk.deskName}} - ({{desk.deskType}})</h2>
+            </div>
+            <div class="col-8 bg-white">
+                <div class="row mt-2">
+                    <div class="col-sm-2 mb-0 text-center" *ngFor="let chair of desk.chairs">
+                        <img src="assets/images/chair_1.png" class="img-fluid img-thumbnail" alt="{{chair.chairName}}"
+                            height="40rem" width="40rem" style="background-color:green" *ngIf="chair.booked"
+                            (click)="onReleaseClick(desk._id,chair);">
+                        <img src="assets/images/chair_1.png" class="img-fluid img-thumbnail" alt="{{chair.chairName}}"
+                            height="40rem" width="40rem" style="background-color:grey" *ngIf="!chair.booked"
+                            (click)="onBookClick(desk._id,chair);">
+                        <p *ngIf="chair.booked" class="text-center text-muted"> <small>{{chair.chairName}}
+                                (Booked)</small>
+                        </p>
+                        <p *ngIf="!chair.booked" class="text-center text-muted"> <small>{{chair.chairName}}</small>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    $(function () {
+        $('[data-toggle="tooltip"]').tooltip()
+    })
+</script>
