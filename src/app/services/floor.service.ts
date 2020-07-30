@@ -45,6 +45,34 @@ export class FloorService {
       )
   }
 
+  addDesk(data: any): Observable<any> {
+    return this.http.post<any>('/floor/desk', data)
+      .pipe(
+        catchError(this.handleError<any>('FloorService - > addDesk', []))
+      )
+  }
+
+  addChair(data: any): Observable<any> {
+    return this.http.post<any>('/floor/desk/chair', data)
+      .pipe(
+        catchError(this.handleError<any>('FloorService - > addChair', []))
+      )
+  }
+
+  deleteDesk(dataDesk: any): Observable<any> {
+
+    return this.http.delete<any>('/floor/desk/' + dataDesk.floorId + '/' + dataDesk.deskId)
+      .pipe(
+        catchError(this.handleError<any>('FloorService - > deleteDesk', []))
+      )
+  }
+
+  deleteChair(dataChair: any): Observable<any> {
+    return this.http.delete<any>('/floor/desk/chair/' + dataChair.floorId + '/' + dataChair.deskId + '/' + dataChair.chairId)
+      .pipe(
+        catchError(this.handleError<any>('FloorService - > deleteChair', []))
+      )
+  }
   /**
   * Handle Http operation that failed.
   * Let the app continue.

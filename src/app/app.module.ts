@@ -28,6 +28,8 @@ import { FloorListComponent } from './masters/floor-list/floor-list.component';
 import { FloorAddComponent } from './masters/floor-add/floor-add.component';
 import { DeskListComponent } from './masters/desk-list/desk-list.component';
 import { DeskAddComponent } from './masters/desk-add/desk-add.component';
+import { ChairAddComponent } from './masters/chair-add/chair-add.component';
+import { ChairListComponent } from './masters/chair-list/chair-list.component';
 
 
 
@@ -84,7 +86,9 @@ export class RoundPipe implements PipeTransform {
     FloorListComponent,
     FloorAddComponent,
     DeskListComponent,
-    DeskAddComponent
+    DeskAddComponent,
+    ChairAddComponent,
+    ChairListComponent
   ],
   imports: [
     BrowserModule,

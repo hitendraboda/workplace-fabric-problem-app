@@ -3,17 +3,16 @@
     style="font-size: 0.95rem">
     <thead class="thead-light">
       <tr>
-        <th><a class="btn btn-sm  btn-primary mr-2" [routerLink]="['/master/desk/add', floorId]">
+        <th><a class="btn btn-sm  btn-primary mr-2" [routerLink]="['/master/chair/add', floorId, deskId]">
             <fa name="plus-circle"></fa> Add
           </a>
         </th>
         <th scope="col">Name</th>
         <th scope="col">Type</th>
-        <th scope="col">No of Chairs</th>
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let desk of desks">
+      <tr *ngFor="let chair of chairs">
         <td>
           <div class="dropdown">
             <button class="btn btn-outline-secondary btn-sm dropdown-toggle" type="button" id="dropdownMenuButton"
@@ -21,16 +20,12 @@
               Action
             </button>
             <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-              <a class="dropdown-item" [routerLink]="[ '/master/chair/list', floorId,desk._id]">Chair</a>
-              <div class="dropdown-divider"></div>
-              <a class="dropdown-item" href="javascript:void(0);" (click)="onDelete(desk)">Delete</a>
+              <a class="dropdown-item" href="javascript:void(0);" (click)="onDelete(chair)">Delete</a>
             </div>
-
           </div>
         </td>
-        <td>{{desk.deskName}}</td>
-        <td>{{desk.deskType}}</td>
-        <td>{{desk.chairs.length}}</td>
+        <td>{{chair.chairName}}</td>
+        <td>{{chair.chairType}}</td>
       </tr>
     </tbody>
   </table>

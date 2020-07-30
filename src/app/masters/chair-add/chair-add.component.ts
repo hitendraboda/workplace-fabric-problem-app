@@ -5,14 +5,15 @@ import { AlertService } from 'src/app/services/alert.service';
 import { FloorService } from 'src/app/services/floor.service';
 
 @Component({
-  selector: 'app-desk-add',
-  templateUrl: './desk-add.component.html',
-  styleUrls: ['./desk-add.component.scss']
+  selector: 'app-chair-add',
+  templateUrl: './chair-add.component.html',
+  styleUrls: ['./chair-add.component.scss']
 })
-export class DeskAddComponent implements OnInit {
+export class ChairAddComponent implements OnInit {
   addForm: FormGroup;
   submitted = false;
   floorId: any;
+  deskId: any;
   constructor(
     private formBuilder: FormBuilder,
     private router: Router,
@@ -21,14 +22,16 @@ export class DeskAddComponent implements OnInit {
     private floorService: FloorService
   ) {
     this.addForm = this.formBuilder.group({
-      deskName: ['', Validators.required],
-      deskType: ['', Validators.required]
+      chairName: ['', Validators.required],
+      chairType: ['', Validators.required]
     });
   }
 
   ngOnInit() {
-    this.floorId = this.route.snapshot.paramMap.get("id");
+    this.floorId = this.route.snapshot.paramMap.get("floorId");
+    this.deskId = this.route.snapshot.paramMap.get("deskId");
   }
+
   onSubmit() {
     this.submitted = true;
     // reset alerts on submit
@@ -37,20 +40,22 @@ export class DeskAddComponent implements OnInit {
     if (this.addForm.invalid) {
       return;
     }
-    let deskData = {
+    let chairData = {
       floorId: this.floorId,
-      deskName: this.addForm.value.deskName,
-      deskType: this.addForm.value.deskType,
+      deskId: this.deskId,
+      chairName: this.addForm.value.chairName,
+      chairType: this.addForm.value.chairType,
+      booked: false,
       deskPosition: {
         x: 0,
         y: 0
       }
     }
 
-    this.floorService.addDesk(deskData)
+    this.floorService.addChair(chairData)
       .subscribe((data) => {
-        this.router.navigate(['/master/desk/list', this.floorId]);
-        this.alertService.success("Well done! Desk created successfully.")
+        this.router.navigate(['/master/chair/list', this.floorId, this.deskId]);
+        this.alertService.success("Well done! Chair created successfully.")
       }, (error) => {
         this.alertService.error(error);
       });
