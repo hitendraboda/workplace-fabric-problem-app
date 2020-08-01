@@ -29,7 +29,7 @@ export class FloorComponent implements OnInit {
           let availableChairs = 0;
           floor.desks.forEach(desk => {
             noOfChairs = noOfChairs + desk.chairs.length;
-            let bookedChairs = desk.chairs.filter(c => c.booked);
+            let bookedChairs = desk.chairs.filter(c => !c.booked);
             availableChairs = availableChairs + bookedChairs.length;
           });
           floor.noOfChairs = noOfChairs;
